@@ -15,7 +15,7 @@ public class Program
         _commandService = new CommandService();
         await new CommandHandler(_client, _commandService).InstallCommandsAsync();
 
-        var token = "MTA3NTQ2OTY5Nzc1MzA0Mjk1NA.GCkwgA.BFbjUnT6ZjBUaN52e7pmXSt8XDjpLb7pwDlmR8";
+        var token = Environment.GetEnvironmentVariable("token");
         await _client.LoginAsync(TokenType.Bot, token);
         await _client.StartAsync();
         await Task.Delay(-1);
