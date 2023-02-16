@@ -1,4 +1,6 @@
 ﻿using Discord.Commands;
+using System;
+using System.Threading.Tasks;
 
 namespace Kocislav.Discord
 {

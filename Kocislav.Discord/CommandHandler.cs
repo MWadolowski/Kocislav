@@ -1,6 +1,7 @@
 ﻿using Discord.Commands;
 using Discord.WebSocket;
 using System.Reflection;
+using System.Threading.Tasks;
 
 public class CommandHandler
 {
