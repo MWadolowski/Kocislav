@@ -17,6 +17,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1
+    - name: app directory
+      run: cd Kocislav.Discord
     - name: Publish .NET Project
       run: dotnet publish Kocislav.Discord.csproj -c Release -o release --nologo
     - name: Commit wwwroot to GitHub Pages
