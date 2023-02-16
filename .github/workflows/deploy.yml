@@ -1,0 +1,27 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy Kot
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy-to-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+    # uses GitHub's checkout action to checkout code form the master branch
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1
+    - name: Publish .NET Project
+      run: dotnet publish Kocislav.Discord.csproj -c Release -o release --nologo
+    - name: Commit wwwroot to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: release/wwwroot
