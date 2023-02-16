@@ -15,8 +15,8 @@ public class Program
 	{
         _client = new DiscordSocketClient();
         _commandService = new CommandService();
+        new LoggingService(_client, _commandService);
         await new CommandHandler(_client, _commandService).InstallCommandsAsync();
-
         var token = Environment.GetEnvironmentVariable("token");
         await _client.LoginAsync(TokenType.Bot, token);
         await _client.StartAsync();
